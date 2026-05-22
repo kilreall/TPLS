@@ -19,7 +19,7 @@ def phadjuster(ph0_m):
 
 def draw():
     
-    plt.scatter(We, ph, color="red", label="data")
+    plt.scatter(We, ph-ph[0], color="red", label="data")
 
 # constants
 
@@ -39,7 +39,8 @@ ph0_m = np.array([0.7768613946477694,
                 -0.8349867329968057])
 
 ph = phadjuster(ph0_m)
-ph[3] = ph[3] - 2 *np.pi
+print(ph)
+#ph[3] = ph[3] - 2 *np.pi
 ph = ph - ph[0]
 print("Dg=", 5/ke/T**2*1e2*1e3, "mgal")
 # draw

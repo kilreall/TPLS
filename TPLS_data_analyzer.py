@@ -45,7 +45,7 @@ def draw_pm():
     ax.plot(alpham* 2*np.pi*T**2, fitf(alpham, Am, Bm, phm), color="red", label="k- fit")
 
     fig, ax1 = plt.subplots()
-    alph = np.linspace(-4*np.pi, 4*np.pi, 1000)
+    alph = np.linspace(-2*np.pi, 2*np.pi, 1000)
     ax1.plot(alph, fitf(alph/2/np.pi/T**2, Ap, Bp, php), color="blue", label="k+ fit")
     ax1.plot(alph, fitf(alph/2/np.pi/T**2, Am, Bm, phm), color="red", label="k- fit")
 
@@ -56,8 +56,8 @@ lam = 780e-9
 ke = 4*np.pi/lam
 
 # data acquiring
-alphap, signalp = read_csv_xy( r"2026-05-15\k+_600mV.csv", 201)
-alpham, signalm = read_csv_xy( r"2026-05-15\k-_600mV.csv", 201)
+alphap, signalp = read_csv_xy( r"2026-05-14_15\k+_800mV.csv", 201)
+alpham, signalm = read_csv_xy( r"2026-05-14_15\k-_800mV.csv", 201)
 alpham = abs(alpham)
 
 # data analyze
