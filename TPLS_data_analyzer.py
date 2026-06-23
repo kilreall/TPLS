@@ -56,8 +56,9 @@ lam = 780e-9
 ke = 4*np.pi/lam
 
 # data acquiring
-alphap, signalp = read_csv_xy( r"2026-05-14_15\k+_800mV.csv", 201)
-alpham, signalm = read_csv_xy( r"2026-05-14_15\k-_800mV.csv", 201)
+V = 800
+alphap, signalp = read_csv_xy( f"2026-05-14_15\\k+_{V}mV.csv", 201)
+alpham, signalm = read_csv_xy( f"2026-05-14_15\\k-_{V}mV.csv", 201)
 alpham = abs(alpham)
 
 # data analyze

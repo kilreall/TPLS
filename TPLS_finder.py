@@ -2,6 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt 
 from scipy.optimize import curve_fit 
 
+def fitf(x, a, b):
+    return a*x+b
+
 def phadjuster(ph0_m):
 
     ph0 = ph0_m[0]
@@ -18,8 +21,10 @@ def phadjuster(ph0_m):
     return np.array(ph_m)
 
 def draw():
+    We_f = np.linspace(0, We[0]+1e4, 100)
+    plt.plot(We_f, fitf(We_f, a, b), color="blue", label="линейная аппроксимация")
+    plt.scatter(np.delete(We, 3), np.delete((ph-ph[0]), 3), color="red", label="данные")
     
-    plt.scatter(We, ph-ph[0], color="red", label="data")
 
 # constants
 
@@ -45,7 +50,14 @@ ph = ph - ph[0]
 print("Dg=", 5/ke/T**2*1e2*1e3, "mgal")
 # draw
 
+# fit
+popt, pcov = curve_fit(fitf, np.delete(We, 3), np.delete((ph-ph[0]), 3))
+a, b = popt
+
 draw()
 
+plt.xlabel(r"$\Omega_{eff}$, [МГц]")
+plt.ylabel(r"Разность фаз, [рад]")
+print(b/ke/T/T*1e5)
 plt.legend()
 plt.show()
