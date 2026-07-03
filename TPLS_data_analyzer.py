@@ -57,12 +57,17 @@ ke = 4*np.pi/lam
 
 # data acquiring
 V = 800
-alphap, signalp = read_csv_xy( f"2026-05-14_15\\k+_{V}mV.csv", 201)
-alpham, signalm = read_csv_xy( f"2026-05-14_15\\k-_{V}mV.csv", 201)
+kp = f"datav2\2026-06-30\TPLS\800mv_k+.csv"
+km = f"datav2\2026-06-30\TPLS\800mv_k-.csv"
+alphap, signalp = read_csv_xy( kp, 201)
+alpham, signalm = read_csv_xy( km, 201)
+
+
+
 alpham = abs(alpham)
 
 # data analyze
-T = 5e-3
+T = 7e-3
 # ph0 = ke*g*T**2
 # ph1 = alphap[len(alphap)//2]
 # print("ke*g*T**2 =", ph0)
