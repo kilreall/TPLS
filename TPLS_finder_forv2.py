@@ -22,8 +22,8 @@ def phadjuster(ph0_m):
 
 def draw():
     We_f = np.linspace(0, np.max(We)+1e4, 100)
-    plt.plot(We_f, fitf(We_f, a, b)/ke/T**2*1e5, color="blue", label="линейная аппроксимация")
-    plt.scatter(We, ph_m/ke/T**2*1e5, color="red", label="данные")
+    plt.plot(We_f, (fitf(We_f, a, b)-fitf(We[2], a, b))/ke/T**2*1e5, color="blue", label="линейная аппроксимация")
+    plt.scatter(We, (ph_m-ph_m[2])/ke/T**2*1e5, color="red", label="данные")
     
 
 # constants
@@ -34,7 +34,7 @@ T = 7e-3
 
 # V = 800, 1200
 typ = np.array([20, 18, 32])*1e-6
-We = np.array([np.pi/typ[0], np.pi/typ[1],  np.pi/typ[2]])
+We = np.array([np.pi/typ[0], np.pi/typ[1],  93*1e3])
 
 
 php = [1.791136736009665, 0.5787226673687026, -0.943691555661724]

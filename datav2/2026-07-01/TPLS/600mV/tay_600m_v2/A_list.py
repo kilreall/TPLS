@@ -33,7 +33,7 @@ A_m = []
 
 
 for ty in ty_m:
-    filename = f"ty{ty}.csv"
+    filename = f"datav2\2026-07-01\TPLS\600mV\tay_600m_v2\ty{ty}.csv"
     sum1, sum2, norm, scan = np.loadtxt(filename, delimiter=',', skiprows=1, unpack=True)
     poi = 201
     if len(sum1) >=201:
@@ -69,10 +69,10 @@ plt.scatter(ty_m, A_m)
 plt.plot(ty_m, A_m)
 
 # fit
-c1 = 4
-c2 = -32
+c1 = 0#4
+c2 = -1#-32
 p0 = [np.pi/ty_m[np.argmax(A_m)],(np.max(A_m) - np.min(A_m))/2, np.min(A_m), 2*ty_m[np.argmax(A_m)]]
-popt, pcov = curve_fit(Rabifit, ty_m[c1:], A_m[c1:], p0=p0)
+popt, pcov = curve_fit(Rabifit, ty_m[c1:c2], A_m[c1:c2], p0=p0)
 w, A, B, tc = popt
 
 # show fit
@@ -83,7 +83,7 @@ print(f"typ = {np.pi/w}")
 
 # fit 1
 p0 = [w,(np.max(A_m) - np.min(A_m))/2, np.min(A_m), 2*ty_m[np.argmax(A_m)], w/36]
-popt, pcov = curve_fit(Rabifit_t, ty_m[c1:], A_m[c1:], p0=p0)
+popt, pcov = curve_fit(Rabifit_t, ty_m[c1:c2], A_m[c1:c2], p0=p0)
 w0, A, B, tc, a = popt
 
 # show fit
